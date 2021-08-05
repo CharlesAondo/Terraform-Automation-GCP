@@ -1,2 +1,2 @@
-bucket_name = "vet_drug_index"
+bucket_name = "Bucket-name"
 storage_class = "STANDARD"

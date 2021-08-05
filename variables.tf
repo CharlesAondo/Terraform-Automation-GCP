@@ -8,7 +8,7 @@ variable "bucket_loaction" {
 }
 variable "project_id" {
       type = string
-      default = "timeless-vet-international"
+      default = "project-od"
 }
 
 variable "storage_class" {

@@ -1,31 +1,13 @@
   
 provider "google" {
-      credentials = file("timeless-vet-international-134ca45b0efb.json")
-      project = "timeless-vet-international"
+      credentials = file("Path to your json file that was created from service account")
+      project = var.project_id
       region  = "us-central1"
       zone    = "us-central1-c"
 
 }
-/**
-resource "google_monitoring_group" "apache_parent" {
-  display_name = "Apache"
-  filter = "metadata.user_labels.app=has_substring(\"website\")"
-}
 
-resource "google_monitoring_group" "apache_prod_subgroup" {
-  display_name = "prod"
-  filter = "metadata.user_labels.env=\"prod\""
-  parent_name =  "${google_monitoring_group.apache_parent.name}"
-}
-
-
-resource "google_monitoring_group" "apache_qa_subgroup" {
-  display_name = "qa"
-  filter = "metadata.user_labels.env=\"qa\""
-  parent_name =  "${google_monitoring_group.apache_parent.name}"
-}
-
-
+#Creating an uptime check
 resource "google_monitoring_uptime_check_config" "http" {
   display_name = "1 - Website uptime check [global]"
   timeout = "10s"
@@ -37,12 +19,12 @@ resource "google_monitoring_uptime_check_config" "http" {
   monitored_resource {
     type = "uptime_url"
     labels = {
-      host = "10.128.0.12"
+      host = "host-ip"
     }
   }
 
 }
-**/
+
 
 # google_storage_bucket.my_bucket will be destroyed
  resource "google_storage_bucket" "default" {
